@@ -40,7 +40,7 @@ def calculate_robot_arm_angles(x, y):
     lower_angle = math.atan((base_height - z)/projection_length)
     base_rArm_joint_angle = base_rArm_joint_angle - lower_angle
     rArm_fArm_joint_angle = 180 - rArm_fArm_joint_angle  # Adjust for the rear arm-front arm joint angle
-
+    base_rotation_angle = 180-base_rotation_angle
     return base_rotation_angle, base_rArm_joint_angle, rArm_fArm_joint_angle
 
 # Example testing code
