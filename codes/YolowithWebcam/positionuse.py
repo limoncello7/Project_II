@@ -9,8 +9,8 @@ def calculate_robot_arm_angles(x, y):
 
     # Angle ranges
     base_rotation_range = (0, 360)  # Adjusted range of base rotation to [0, 360] degrees for full circular motion
-    base_rArm_joint_range = (45, 180)  # Range of rotation at the base-rear arm joint (degrees)
-    rArm_fArm_joint_range = (35, 120)  # Range of rotation at the rear arm-front arm joint (degrees)
+    base_rArm_joint_range = (0, 125)  # Range of rotation at the base-rear arm joint (degrees)
+    rArm_fArm_joint_range = (25, 180)  # Range of rotation at the rear arm-front arm joint (degrees)
 
     # Calculate base rotation angle and normalize
     base_rotation_angle = math.degrees(math.atan2(y, x))
@@ -37,7 +37,10 @@ def calculate_robot_arm_angles(x, y):
     # Apply angle ranges
     base_rArm_joint_angle = max(min(base_rArm_joint_angle, base_rArm_joint_range[1]), base_rArm_joint_range[0])
     rArm_fArm_joint_angle = max(min(rArm_fArm_joint_angle, rArm_fArm_joint_range[1]), rArm_fArm_joint_range[0])
-    
+    lower_angle = math.atan((base_height - z)/projection_length)
+    base_rArm_joint_angle = base_rArm_joint_angle - lower_angle
+    rArm_fArm_joint_angle = 180 - rArm_fArm_joint_angle  # Adjust for the rear arm-front arm joint angle
+
     return base_rotation_angle, base_rArm_joint_angle, rArm_fArm_joint_angle
 
 # Example testing code

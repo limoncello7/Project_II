@@ -94,7 +94,7 @@ while True:
             angle1, angle2, angle3 = calculate_robot_arm_angles(x_center_cm, y_center_cm)
             # Check if the object is within the graspable angle range and add it to a list
             angle=(angle1,angle2,angle3)
-            if (0 <= angle1 and angle1 <= 180) and (45.5 <= angle2 and angle2 <= 180) and (35 <= angle3 and angle3 <= 120):
+            if (0 <= angle1 and angle1 <= 180) and (0.5 <= angle2 and angle2 <= 125) and (0 <= angle3 and angle3 <= 155):
                 objects_within_grasp.append((distance, (x_center_cm, y_center_cm), angle))
     draw_axes(img)
     fps = 1 / (new_frame_time - prev_frame_time)
